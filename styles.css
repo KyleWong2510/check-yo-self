@@ -191,16 +191,11 @@ aside input {
   margin: 0;
 }
 
+.delete,
 .urgent {
   display: inline-flex;
   align-items: center;
   flex-direction: column;
-  float: left;
-}
-
-.delete {
-  display: inline-flex;
-  align-items: center;
-  flex-direction: column;
   float: right;
+  margin-top: 15px
 }

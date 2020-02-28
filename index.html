@@ -24,14 +24,36 @@
         <form class="task-item-input">
           <label>Task Item</label>
           <input type="text">
-          <button type="submit"></button>
+          <button type="submit"><p>+</p></button>
         </form>
         <button class="make-task-btn">Make Task List</button>
         <button class="clear-all-btn">Clear All</button>
         <button class="filter-urgent-btn">Filter By Urgency</button>
       </aside>
       <section id="card-section">
-        
+        <div class="task-list-card">
+          <h3>Task Title</h3>
+          <div class="tasks-section">
+            <div class="task">
+              <img class="checkbox" src="assets/checkbox.svg">
+              <p>Don't ever play yourself.</p>
+            </div>
+            <div class="task">
+              <img class="checkbox" src="assets/checkbox.svg">
+              <p>Every chance I get, I water the plants.</p>
+            </div>
+          </div>
+          <div class="card-icons">
+            <div class="urgent">
+              <img src="assets/urgent.svg">
+              <p>Urgent</p>
+            </div>
+            <div class="delete">                
+              <img src="assets/delete.svg">
+              <p>Delete</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 

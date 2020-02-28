@@ -9,7 +9,7 @@ body {
 /* HEADER */
 header {
   background-color: #1F1F3D;
-  height: 10vh;
+  height: 11vh;
 }
 
 #header-text {
@@ -62,7 +62,10 @@ span {
 
 /* MAIN */
 main {
-  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  height: 89vh;
+  width: 100vw;
 }
 
 /* ASIDE */
@@ -116,19 +119,27 @@ aside input {
   border-radius: 2px 0px 0px 2px; 
   float: left;
   height: 40%;
-  width: 90%;
+  width: 89%;
 }
 
 .task-item-input button {
   background: #1F1F3D;
   border: 1px solid #1F1F3D;
   border-radius: 0px 2px 2px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   float: left;
   font-size: 17px;
   height: 45%;
   margin: 0px;
   padding: 0px;
-  width: 9%;
+  width: 10%;
+}
+
+.task-item-input p {
+  font-size: 25px;
+  margin: 0;
 }
 
 /* CARD SECTION */
@@ -136,3 +147,60 @@ aside input {
   width: 70%;
 }
 
+.task-list-card {
+  background-color: #FEE89D;
+  border: 2px solid #FFC30C;
+  color: #1F1F3D;
+  padding: 10px;
+  width: 40%;
+}
+
+.task-list-card h3 {
+  border-bottom: 2px solid #FFC30C;
+}
+
+.tasks-section {
+  border-bottom: 2px solid #FFC30C;
+}
+
+.task-list-card img {
+  width: 5%;
+}
+
+.task-list-card p {
+  display: inline-block;
+}
+
+.task {
+  width: 90%;
+}
+
+.card-icons {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-icons img{
+  width: 13%
+}
+
+.card-icons p {
+  font-size: 12px;
+  margin: 0;
+}
+
+.urgent {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  float: left;
+}
+
+.delete {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  float: right;
+}

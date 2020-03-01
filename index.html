@@ -1,65 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Check Yo' Self</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-  </head>
-  <body>
-    <header>
-      <p id="header-text">Check <span>Yo'</span> Self</p>
-      <form class="search-bar">
-        <button type="submit"><img id="search-btn" src="assets/search.svg"></button>
-        <input placeholder=" Search" type="text">
-      </form>
-    </header>
-    <main>
-      <aside>
-        <div class="task-title-input">
-          <label>Task Title</label>
-          <input type="text">
-        </div>
-        <form class="task-item-input">
-          <label>Task Item</label>
-          <input type="text">
-          <button type="submit"><p>+</p></button>
-        </form>
-        <button class="make-task-btn">Make Task List</button>
-        <button class="clear-all-btn">Clear All</button>
-        <button class="filter-urgent-btn">Filter By Urgency</button>
-      </aside>
-      <section id="card-section">
-        <div class="task-list-card">
-          <h3>Task Title</h3>
-          <div class="tasks-section">
-            <div class="task">
-              <img class="checkbox" src="assets/checkbox.svg">
-              <p>Don't ever play yourself.</p>
-            </div>
-            <div class="task">
-              <img class="checkbox" src="assets/checkbox.svg">
-              <p>Every chance I get, I water the plants.</p>
-            </div>
-          </div>
-          <div class="card-icons">
-            <div class="urgent">
-              <img src="assets/urgent.svg">
-              <p>Urgent</p>
-            </div>
-            <div class="delete">                
-              <img src="assets/delete.svg">
-              <p>Delete</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+
+<head>
+  <meta charset="utf-8">
+  <title>Check Yo' Self</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <p id="header-text">Check <span>Yo'</span> Self</p>
+    <form class="search-bar">
+      <button type="submit"><img id="search-btn-icon" src="assets/search.svg"></button>
+      <input placeholder=" Search" type="text">
+    </form>
+  </header>
+  <main>
+    <aside>
+      <div class="task-title-input">
+        <label>Task Title</label>
+        <input class="title-input" type="text">
+      </div>
+      <div class="task-display">
+      </div>
+      <div class="task-item-input">
+        <label>Task Item</label>
+        <input class="task-input" type="text">
+        <button class="create-task-btn">
+          <p>+</p>
+        </button>
+      </div>
+      <button class="make-task-list-btn">Make Task List</button>
+      <button class="clear-all-btn">Clear All</button>
+      <button class="filter-urgent-btn">Filter By Urgency</button>
+    </aside>
+    <section class="masonry" id="card-display">
+
+    </section>
+  </main>
 
 
-    <script src="task.js"></script>
-    <script src="todo-list.js"></script>
-    <script src="main.js"></script>
-  </body>
+  <script src="task.js"></script>
+  <script src="todo-list.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>

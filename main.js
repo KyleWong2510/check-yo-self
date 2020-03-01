@@ -77,6 +77,7 @@ function displayCard() {
     createList(); 
     clearDisplay();
   }
+  currentTasks = []
 }
 
 function clearDisplay() {
@@ -90,16 +91,18 @@ function createList() {
   var urgent = false;
   var tasks = currentTasks;
   var newToDoList = new ToDoList(listId, title, urgent, tasks);
-  console.log(newToDoList);
   populateCard(newToDoList);
+  return newToDoList;
 }
 
-function populateCard() {
+function populateCard(newToDoList) {
+  console.log('currentTasks', currentTasks);
+
   cardDisplay.innerHTML += `
   <div class="task-list-card">
     <div class="card-contents">
-      <h3>${titleInput.value}</h3>
-      <div class="tasks-section">
+      <h3>${newToDoList.title}</h3>
+      <div class="tasks-section" data-id="${newToDoList.id}">
 
       </div>
       <div class="card-icons">
@@ -114,20 +117,19 @@ function populateCard() {
       </div>
     </div>
   </div>`
-  cardTasks();
+  cardTasks(newToDoList);
 }
-
-function cardTasks() {
-  var tasksSection = document.querySelector('.tasks-section');
+//BUG BELOW!
+function cardTasks(newToDoList) {
+  var tasksSection = document.querySelector(`.tasks-section[data-id="${newToDoList.id}"]`);
   
-  for (var i = 0; i < currentTasks.length; i++) {
+  for (var i = 0; i < newToDoList.tasks.length; i++) {
     tasksSection.innerHTML += `
     <div class="task">
-    <img class="checkbox" src="assets/checkbox.svg">
-    <p>${currentTasks[i].}</p> 
+      <img class="checkbox" src="assets/checkbox.svg">
+      <p>${newToDoList.tasks[i].text}</p> 
     </div>
     `
-    console.log('task', tasksSection);
   }
 }
 

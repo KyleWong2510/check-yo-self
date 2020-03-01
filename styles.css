@@ -176,8 +176,8 @@ aside input {
 }
 
 .task-list-card {
-  background-color: #FEE89D;
-  border: 2px solid #FFC30C;
+  background-color: #F3F6F7;
+  border: 2px solid #C7C3D8;
   color: #1F1F3D;
   display: inline-block;
   margin: .25em .25em 0.75em;
@@ -190,8 +190,8 @@ aside input {
 }
 
 .tasks-section {
-  border-top: 2px solid #FFC30C;
-  border-bottom: 2px solid #FFC30C;
+  border-top: 2px solid #C7C3D8;
+  border-bottom: 2px solid #C7C3D8;
   margin: 5px 0px;
   padding: 10px 0px;
 }

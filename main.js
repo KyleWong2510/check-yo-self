@@ -11,7 +11,7 @@ var clearAllBtn = document.querySelector('.clear-all-btn');
 var makeListBtn = document.querySelector('.make-task-list-btn');
 
 var currentTasks = [];
-var tasksCard = []; 
+var tasksCards = []; 
 
 createTaskBtn.addEventListener('click', addTask);
 taskDisplay.addEventListener('click', deleteTask);
@@ -72,8 +72,8 @@ function clearAll() {
 
 // TODO DISPLAY LIST AND INSTANTIATE LIST OBJECT
 function displayCard() {
+  taskDisplay.innerHTML = '';
   if (titleInput.value !== '' && taskInput.value === '') {
-    // populateCard();
     createList(); 
     clearDisplay();
   }
@@ -90,38 +90,45 @@ function createList() {
   var urgent = false;
   var tasks = currentTasks;
   var newToDoList = new ToDoList(listId, title, urgent, tasks);
-  // populateCard(newToDoList);
+  console.log(newToDoList);
+  populateCard(newToDoList);
 }
 
-// function populateCard() {
-//   cardDisplay.innerHTML += `
-//   <div class="task-list-card">
-//     <div class="card-contents">
-//       <h3>${titleInput.value}</h3>
-//       <div class="tasks-section">
-//         <div class="task">
-//           <img class="checkbox" src="assets/checkbox.svg">
-//           <p>Don't ever play yourself.</p>
-//         </div>
-//         <div class="task">
-//           <img class="checkbox" src="assets/checkbox.svg">
-//           <p>Every chance I get, I water the plants.</p>
-//         </div>
-//         <div class="task">
-//           <img class="checkbox" src="assets/checkbox.svg">
-//           <p>Every chance I get, I water the plants.</p>
-//         </div>
-//       </div>
-//       <div class="card-icons">
-//         <div class="urgent">
-//           <img src="assets/urgent.svg">
-//           <p>Urgent</p>
-//         </div>
-//         <div class="delete">
-//           <img src="assets/delete.svg">
-//           <p>Delete</p>
-//         </div>
-//       </div>
-//     </div>
-//   </div>`
-// }
+function populateCard() {
+  cardDisplay.innerHTML += `
+  <div class="task-list-card">
+    <div class="card-contents">
+      <h3>${titleInput.value}</h3>
+      <div class="tasks-section">
+
+      </div>
+      <div class="card-icons">
+        <div class="urgent">
+          <img src="assets/urgent.svg">
+          <p>Urgent</p>
+        </div>
+        <div class="delete">
+          <img src="assets/delete.svg">
+          <p>Delete</p>
+        </div>
+      </div>
+    </div>
+  </div>`
+  cardTasks();
+}
+
+function cardTasks() {
+  var tasksSection = document.querySelector('.tasks-section');
+  
+  for (var i = 0; i < currentTasks.length; i++) {
+    tasksSection.innerHTML += `
+    <div class="task">
+    <img class="checkbox" src="assets/checkbox.svg">
+    <p>${currentTasks[i].}</p> 
+    </div>
+    `
+    console.log('task', tasksSection);
+  }
+}
+
+        

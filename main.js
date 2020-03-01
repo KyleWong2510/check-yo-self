@@ -11,17 +11,16 @@ var clearAllBtn = document.querySelector('.clear-all-btn');
 var makeListBtn = document.querySelector('.make-task-list-btn');
 
 var currentTasks = [];
-
+var tasksCard = []; 
 
 createTaskBtn.addEventListener('click', addTask);
 taskDisplay.addEventListener('click', deleteTask);
 clearAllBtn.addEventListener('click', clearAll);
-// makeListBtn.addEventListener('click', makeToDoCard);
+makeListBtn.addEventListener('click', displayCard);
 
-var tasksCard = []; 
+// var toDoList = new ToDoList(id, title, urgent, tasksCard);
 
-var toDoList = new ToDoList(id, title, urgent, tasksCard);
-
+// TASK DISPLAY AND INSTANTIATE TASK OBJECT
 function addTask() {
   if (taskInput.value === '') {
     return
@@ -33,8 +32,13 @@ function addTask() {
 
 function createTaskInstance() {
   var taskIdNum = Date.now();
-  var newTask = new Task(`${taskIdNum}`, `${taskInput.value}`, false);
+  var task = taskInput.value;
+  var newTask = new Task(taskIdNum, task, false);
   addToCurrentTasks(newTask);
+}
+
+function addToCurrentTasks(newTask) {
+  currentTasks.push(newTask);
 }
 
 function displayTask() {
@@ -66,14 +70,30 @@ function clearAll() {
   taskInput.value = '';
 }
 
-
-function addToCurrentTasks(newTask) {
-  currentTasks.push(newTask);
+// TODO DISPLAY LIST AND INSTANTIATE LIST OBJECT
+function displayCard() {
+  if (titleInput.value !== '' && taskInput.value === '') {
+    // populateCard();
+    createList(); 
+    clearDisplay();
+  }
 }
 
-// function makeToDoCard() {
-//   var newToDoList = new ToDoList(id, title, urgent, tasks);
-//   newToDoList.tasks = currentTasks
+function clearDisplay() {
+  taskDisplay.innerHTML = '';
+  clearAll();
+}
+
+function createList() {
+  var listId = Date.now();
+  var title = titleInput.value;
+  var urgent = false;
+  var tasks = currentTasks;
+  var newToDoList = new ToDoList(listId, title, urgent, tasks);
+  // populateCard(newToDoList);
+}
+
+// function populateCard() {
 //   cardDisplay.innerHTML += `
 //   <div class="task-list-card">
 //     <div class="card-contents">

@@ -18,7 +18,8 @@ taskDisplay.addEventListener('click', deleteTask);
 clearAllBtn.addEventListener('click', clearAll);
 makeListBtn.addEventListener('click', displayCard);
 
-// var toDoList = new ToDoList(id, title, urgent, tasksCard);
+clearAllBtn.disabled = true;
+makeListBtn.disabled = true;
 
 // TASK DISPLAY AND INSTANTIATE TASK OBJECT
 function addTask() {
@@ -27,7 +28,9 @@ function addTask() {
   } else {
     createTaskInstance();
     displayTask();
+    enableMakeListBtn();
   }
+  clearAllBtn.disabled = false;
 }
 
 function createTaskInstance() {
@@ -66,23 +69,35 @@ function deleteTask(event){
 }
 
 function clearAll() {
-  titleInput.value = '';
-  taskInput.value = '';
+  if (titleInput.value || taskInput.value || taskDisplay.innerHTML) {
+    titleInput.value = '';
+    taskInput.value = '';
+    taskDisplay.innerHTML = ``;
+  } else {
+    clearAllBtn.disabled = true;
+  }
+  currentTasks = []
+}
+
+function enableMakeListBtn(){
+  if (titleInput.value && taskDisplay.innerHTML){
+    makeListBtn.disabled = false
+  }
 }
 
 // TODO DISPLAY LIST AND INSTANTIATE LIST OBJECT
+
 function displayCard() {
-  taskDisplay.innerHTML = '';
-  if (titleInput.value !== '' && taskInput.value === '') {
+  if (titleInput.value !== '' && taskDisplay.innerHTML !=='' ) {
     createList(); 
     clearDisplay();
   }
-  currentTasks = []
 }
 
 function clearDisplay() {
   taskDisplay.innerHTML = '';
   clearAll();
+  makeListBtn.disabled = true;
 }
 
 function createList() {
@@ -119,7 +134,7 @@ function populateCard(newToDoList) {
   </div>`
   cardTasks(newToDoList);
 }
-//BUG BELOW!
+
 function cardTasks(newToDoList) {
   var tasksSection = document.querySelector(`.tasks-section[data-id="${newToDoList.id}"]`);
   

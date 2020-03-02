@@ -10,6 +10,7 @@ var createTaskBtn = document.querySelector('.create-task-btn');
 var deleteTaskBtn = document.querySelector('.delete-task-btn');
 var clearAllBtn = document.querySelector('.clear-all-btn');
 var makeListBtn = document.querySelector('.make-task-list-btn');
+var parsedTasks = JSON.parse(localStorage.getItem('list'));
 
 var currentTasks = [];
 var tasksCards = [];
@@ -112,7 +113,7 @@ function createList() {
   addToTasksCards(newToDoList);
   populateCard(newToDoList);
   newToDoList.saveToStorage(tasksCards);
-  return newToDoList;
+  // return newToDoList;
 }
 
 function addToTasksCards(list) {

@@ -4,17 +4,25 @@ class ToDoList {
     this.title = title;
     this.urgent = urgent || false;
     this.tasks = tasks;
-
   };
-  saveToStorage() {
 
+  saveToStorage(array) {
+    localStorage.setItem('list', JSON.stringify(array));
   };
+
+  retrieveFromStorage() {
+    var parsedTasks = JSON.parse(localStorage.getItem('list'));
+    displayRetrievedCards(parsedTasks);
+  };
+
   deleteFromStorage() {
-
+    // localStorage.removeItem(`'${this.id}'`);
   };
+
   updateToDo() {
 
   };
+
   updateTask() {
 
   };

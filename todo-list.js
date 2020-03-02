@@ -7,12 +7,14 @@ class ToDoList {
   };
 
   saveToStorage(array) {
-    localStorage.setItem('list', JSON.stringify(array));
+    localStorage.setItem('list', JSON.stringify(array)); 
+
   };
 
   retrieveFromStorage() {
     var parsedTasks = JSON.parse(localStorage.getItem('list'));
     displayRetrievedCards(parsedTasks);
+    tasksCards = parsedTasks;
   };
 
   deleteFromStorage() {

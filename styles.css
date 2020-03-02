@@ -175,6 +175,12 @@ aside input {
   column-count: 2;
 }
 
+#empty-to-do-msg {
+  color: #587A8A;
+  font-size: 20px;
+  font-weight: 800;
+}
+
 .task-list-card {
   background-color: #F3F6F7;
   border: 2px solid #C7C3D8;

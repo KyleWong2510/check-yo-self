@@ -5,6 +5,7 @@ var titleInput = document.querySelector('.title-input');
 var taskDisplay = document.querySelector('.task-display');
 var taskList = document.querySelector('.task-list');
 var cardDisplay = document.querySelector('#card-display');
+var emptyToDoMsg = document.querySelector('.empty-to-do-msg');
 
 var createTaskBtn = document.querySelector('.create-task-btn');
 var deleteTaskBtn = document.querySelector('.delete-task-btn');
@@ -23,7 +24,14 @@ makeListBtn.addEventListener('click', displayCard);
 clearAllBtn.disabled = true;
 makeListBtn.disabled = true;
 
-window.onload = newToDoList.retrieveFromStorage();
+window.onload = noListMsgDisplay();
+
+function noListMsgDisplay() {
+  if (localStorage.length !== 0) {
+    newToDoList.retrieveFromStorage();
+    emptySectionMsg();
+  }
+}
 
 // TASK DISPLAY AND INSTANTIATE TASK OBJECT
 function addTask() {
@@ -89,12 +97,19 @@ function enableMakeListBtn() {
   }
 }
 
+function emptySectionMsg() {
+  var emptyToDoMsg = document.getElementById('empty-to-do-msg');
+  if (cardDisplay.innerHTML !== ``) {
+    emptyToDoMsg.classList.add('hide');
+  }
+}
 // TODO DISPLAY LIST AND INSTANTIATE LIST OBJECT
 
 function displayCard() {
   if (titleInput.value !== '' && taskDisplay.innerHTML !== '') {
     createList();
     clearDisplay();
+    emptySectionMsg();
   }
 }
 
@@ -122,13 +137,12 @@ function addToTasksCards(list) {
 
 function populateCard(newToDoList) {
   console.log('currentTasks', currentTasks);
-
   cardDisplay.innerHTML += `
   <div class="task-list-card">
     <div class="card-contents">
       <h3>${newToDoList.title}</h3>
       <div class="tasks-section" data-id="${newToDoList.id}">
-
+        
       </div>
       <div class="card-icons">
         <div class="urgent">
@@ -147,7 +161,6 @@ function populateCard(newToDoList) {
 
 function cardTasks(newToDoList) {
   var tasksSection = document.querySelector(`.tasks-section[data-id="${newToDoList.id}"]`);
-
   for (var i = 0; i < newToDoList.tasks.length; i++) {
     tasksSection.innerHTML += `
     <div class="task">

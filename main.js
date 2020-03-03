@@ -55,7 +55,13 @@ function createTaskInstance() {
 function addToCurrentTasks(newTask) {
   currentTasks.push(newTask);
 }
-
+//check if clicked id matches the task id
+//if so, update task to task.complete = !task.complete
+//save to storage using same key as local storage list array
+//check state of completion
+//if complete display x and return
+//if not display y and return
+//use returned to 
 function displayTask() {
   taskDisplay.innerHTML = '';
   for (var i = 0; i < currentTasks.length; i++) {
@@ -172,6 +178,29 @@ function cardTasks(newToDoList) {
 }
  
 // DISPLAY FROM LOCAL STORAGE
+function reinstantiateCard() {
+  var instantiatedCards = [];
+  for (var i = 0; i < tasksCards.length; i++) {
+    var instantiatedTasks = [];
+    for (var j = 0; j < tasksCards[i].tasks.length; j++) {
+      var reinstantiatedTask = new Task(
+        tasksCards[i].tasks[j].taskId,
+        tasksCards[i].tasks[j].text,
+        tasksCards[i].tasks[j].completed
+      );
+      instantiatedTasks.push(reinstantiatedTask);
+    }
+    var reinstantiatedToDoList = new ToDoList(
+      tasksCards[i].id, 
+      tasksCards[i].title, 
+      tasksCards[i].urgent, 
+      instantiatedTasks
+    );
+    instantiatedCards.push(reinstantiatedToDoList);
+  }
+  tasksCards = instantiatedCards;
+  console.log(tasksCards)
+}
 
 function displayRetrievedCards(array) {
   for (var i = 0; i < array.length; i++) {
@@ -184,7 +213,7 @@ function displayRetrievedCards(array) {
         </div>
         <div class="card-icons">
           <div class="urgent">
-            <img src="assets/urgent.svg">
+            <img class="urgent-btn" src="assets/urgent.svg">
             <p>Urgent</p>
           </div>
           <div class="delete">
@@ -203,9 +232,50 @@ function displayRetrievedTasks(array) {
     singleTask += `
     <div class="task">
       <img class="checkbox" src="assets/checkbox.svg">
-      <p>${array[i].text}</p> 
+      <p data-id="task-text">${array[i].text}</p> 
     </div>
     `
   }
   return singleTask
 }
+
+// CHECK BOXES
+
+var cardSection = document.querySelector('.masonry');
+
+cardSection.addEventListener('click', checkTask);
+
+function checkTask(event) {
+  if (event.target.className === 'checkbox'){
+    event.target.src = 'assets/checkbox-active.svg';
+    var taskCheckbox = event.target.closest('.task');
+    taskCheckbox.classList.add('checked');
+    // newTask.completed = true;
+  }
+}
+
+cardSection.addEventListener('click', urgentBtnOn)
+cardSection.addEventListener('click', urgentBtnOff)
+
+function urgentBtnOn(event) {
+  if (event.target.className === 'urgent-btn'){
+    event.target.src = 'assets/urgent-active.svg';
+    event.target.classList.add('selected');
+    event.target.parentNode.parentNode.parentNode.parentNode.classList.add('urgentSelected');
+  }
+}
+
+// function urgentBtnOff(event) {
+//   console.log(event.target.classList)
+//   if (event.target.className === 'selected'){
+//     event.target.src = 'assets/urgent.svg';
+//     event.target.classList.remove('selected');
+//     event.target.classList.remove('urgentSelected');
+//   }
+// }
+
+// function deleteToDoList() {
+//   for (var i = 0; i < currentTasks[i]; i++){
+//     if (currentTasks[i].completed == true)
+//   }
+// }

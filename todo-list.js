@@ -15,6 +15,7 @@ class ToDoList {
     var parsedTasks = JSON.parse(localStorage.getItem('list'));
     displayRetrievedCards(parsedTasks);
     tasksCards = parsedTasks;
+    reinstantiateCard();
   };
 
   deleteFromStorage() {
@@ -22,7 +23,7 @@ class ToDoList {
   };
 
   updateToDo() {
-
+    this.tasks[i].completed = true;
   };
 
   updateTask() {

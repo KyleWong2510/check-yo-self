@@ -83,31 +83,31 @@ aside button {
   border-radius: 2px;
   color: #FFFFFF;
   font-size: 16px;
-  height: 6%;
+  height: 40px;
   margin: 7px 0px;
   padding: 10px;
+  width: 100%
 }
 
 aside input {
   border: solid 1px #1F1F3D;
   border-radius: 2px;
-  height: 12%;
+  height: 35px;
 }
 
 .task-title-input {
-  height: 13%;
+  height: 90px;
   margin: 5% 0% 0%;
   width: 100%;
 }
 
 .task-title-input input {
   display: block;
-  height: 40%;
   width: 99%;
 }
 
 .task-item-input {
-  height: 13%;
+  height: 90px;
   width: 100%;
 }
 
@@ -116,7 +116,6 @@ aside input {
   border: 1px solid #1F1F3D;
   border-radius: 2px 0px 0px 2px; 
   float: left;
-  height: 45%;
   width: 89%;
 }
 
@@ -129,7 +128,7 @@ aside input {
   justify-content: center;
   float: left;
   font-size: 17px;
-  height: 45%;
+  height: 35px;
   margin: 0px;
   padding: 0px;
   width: 10%;
@@ -148,14 +147,16 @@ aside input {
   width: 5%;
 }
 
-.hide {
-  display: none;
-}
-
 .task-list-item {
   color: #FFFFFF;
   display: inline-block;
   margin: 3px;
+}
+
+.filter-urgent {
+  border-top: 2px solid #3C6577;
+  margin: 20px 0px;
+  padding: 20px 0px;
 }
 
 /* CARD SECTION */
@@ -192,7 +193,7 @@ aside input {
 }
 
 .card-contents {
- margin:  1rem 0; 
+  margin:  1rem 0; 
 }
 
 .tasks-section {
@@ -249,4 +250,8 @@ aside input {
 .checked {
   color: #3C6577;
   font-style: italic;
+}
+
+.hide {
+  display: none;
 }

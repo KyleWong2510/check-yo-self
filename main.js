@@ -34,6 +34,7 @@ function noListMsgDisplay() {
 }
 
 // TASK DISPLAY AND INSTANTIATE TASK OBJECT
+
 function addTask() {
   if (taskInput.value === '') {
     return
@@ -110,7 +111,8 @@ function emptySectionMsg() {
     emptyToDoMsg.classList.add('hide');
   }
 }
-// TODO DISPLAY LIST AND INSTANTIATE LIST OBJECT
+
+// TODO LIST DISPLAY AND INSTANTIATE LIST OBJECT
 
 function displayCard() {
   if (titleInput.value !== '' && taskDisplay.innerHTML !== '') {
@@ -135,7 +137,6 @@ function createList() {
   addToTasksCards(newToDoList);
   populateCard(newToDoList);
   newToDoList.saveToStorage(tasksCards);
-  // return newToDoList;
 }
 
 function addToTasksCards(list) {
@@ -144,7 +145,7 @@ function addToTasksCards(list) {
 
 function populateCard(newToDoList) {
   console.log('currentTasks', currentTasks);
-  cardDisplay.innerHTML += `
+  cardDisplay.insertAdjacentHTML("afterbegin", `
   <div class="task-list-card">
     <div class="card-contents">
       <h3>${newToDoList.title}</h3>
@@ -162,7 +163,7 @@ function populateCard(newToDoList) {
         </div>
       </div>
     </div>
-  </div>`
+  </div>`)
   cardTasks(newToDoList);
 }
 
@@ -179,6 +180,7 @@ function cardTasks(newToDoList) {
 }
  
 // DISPLAY FROM LOCAL STORAGE
+
 function reinstantiateCard() {
   var instantiatedCards = [];
   for (var i = 0; i < tasksCards.length; i++) {
@@ -205,7 +207,7 @@ function reinstantiateCard() {
 
 function displayRetrievedCards(array) {
   for (var i = 0; i < array.length; i++) {
-    cardDisplay.innerHTML += `
+    cardDisplay.insertAdjacentHTML("afterbegin", `
     <div class="task-list-card">
       <div class="card-contents">
         <h3>${array[i].title}</h3>
@@ -223,7 +225,7 @@ function displayRetrievedCards(array) {
           </div>
         </div>
       </div>
-    </div>`
+    </div>`)
   }
 }
 
@@ -241,6 +243,7 @@ function displayRetrievedTasks(array) {
 }
 
 // CARD BUTTONS TOGGLE
+
 var cardSection = document.querySelector('.masonry')
 cardSection.addEventListener('click', cardBtnToggle)
 

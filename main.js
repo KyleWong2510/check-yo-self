@@ -62,6 +62,7 @@ function addToCurrentTasks(newTask) {
 //if complete display x and return
 //if not display y and return
 //use returned to 
+
 function displayTask() {
   taskDisplay.innerHTML = '';
   for (var i = 0; i < currentTasks.length; i++) {
@@ -239,40 +240,38 @@ function displayRetrievedTasks(array) {
   return singleTask
 }
 
-// CHECK BOXES
+// CARD BUTTONS TOGGLE
+var cardSection = document.querySelector('.masonry')
+cardSection.addEventListener('click', cardBtnToggle)
 
-var cardSection = document.querySelector('.masonry');
+function cardBtnToggle(event){
+  checkTaskToggle(event);
+  urgentBtnToggle(event)
+}
 
-cardSection.addEventListener('click', checkTask);
-
-function checkTask(event) {
-  if (event.target.className === 'checkbox'){
-    event.target.src = 'assets/checkbox-active.svg';
+function checkTaskToggle(event) {
+  if (event.target.classList.contains('checkbox')){
     var taskCheckbox = event.target.closest('.task');
-    taskCheckbox.classList.add('checked');
-    // newTask.completed = true;
-  }
+    taskCheckbox.classList.toggle('checked');
+    if (event.target.src.match('assets/checkbox.svg')){
+      event.target.src = 'assets/checkbox-active.svg'
+    } else {
+      event.target.src = 'assets/checkbox.svg';
+    }
+  }  
 }
 
-cardSection.addEventListener('click', urgentBtnOn)
-cardSection.addEventListener('click', urgentBtnOff)
-
-function urgentBtnOn(event) {
-  if (event.target.className === 'urgent-btn'){
-    event.target.src = 'assets/urgent-active.svg';
-    event.target.classList.add('selected');
-    event.target.parentNode.parentNode.parentNode.parentNode.classList.add('urgentSelected');
+function urgentBtnToggle(event) {
+  if (event.target.classList.contains('urgent-btn')){
+    event.target.parentNode.parentNode.parentNode.firstElementChild.nextSibling.nextSibling.classList.toggle('urgentSelected');
+    event.target.parentNode.parentNode.parentNode.parentNode.classList.toggle('urgentSelected');
+    if (event.target.src.match('assets/urgent.svg')){
+      event.target.src = 'assets/urgent-active.svg';
+    } else {
+      event.target.src = 'assets/urgent.svg'
+    }
   }
 }
-
-// function urgentBtnOff(event) {
-//   console.log(event.target.classList)
-//   if (event.target.className === 'selected'){
-//     event.target.src = 'assets/urgent.svg';
-//     event.target.classList.remove('selected');
-//     event.target.classList.remove('urgentSelected');
-//   }
-// }
 
 // function deleteToDoList() {
 //   for (var i = 0; i < currentTasks[i]; i++){

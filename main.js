@@ -57,13 +57,6 @@ function createTaskInstance() {
 function addToCurrentTasks(newTask) {
   currentTasks.push(newTask);
 }
-//check if clicked id matches the task id
-//if so, update task to task.complete = !task.complete
-//save to storage using same key as local storage list array
-//check state of completion
-//if complete display x and return
-//if not display y and return
-//use returned to 
 
 function displayTask() {
   taskDisplay.innerHTML = '';
@@ -145,7 +138,6 @@ function addToTasksCards(list) {
 }
 
 function populateCard(newToDoList) {
-  console.log('currentTasks', currentTasks);
   cardDisplay.insertAdjacentHTML("afterbegin", `
   <div class="task-list-card">
     <div class="card-contents">
@@ -155,7 +147,7 @@ function populateCard(newToDoList) {
       </div>
       <div class="card-icons">
         <div class="urgent">
-          <img src="assets/urgent.svg">
+          <img class="urgent-btn" src="assets/urgent.svg">
           <p>Urgent</p>
         </div>
         <div class="delete">
@@ -179,7 +171,7 @@ function cardTasks(newToDoList) {
     `
   }
 }
- 
+
 // DISPLAY FROM LOCAL STORAGE
 
 function reinstantiateCard() {
@@ -195,15 +187,14 @@ function reinstantiateCard() {
       instantiatedTasks.push(reinstantiatedTask);
     }
     var reinstantiatedToDoList = new ToDoList(
-      tasksCards[i].id, 
-      tasksCards[i].title, 
-      tasksCards[i].urgent, 
+      tasksCards[i].id,
+      tasksCards[i].title,
+      tasksCards[i].urgent,
       instantiatedTasks
     );
     instantiatedCards.push(reinstantiatedToDoList);
   }
   tasksCards = instantiatedCards;
-  console.log(tasksCards)
 }
 
 function displayRetrievedCards(array) {
@@ -240,13 +231,14 @@ function displayRetrievedTasks(array) {
         <p data-id="task-text">${array[i].text}</p> 
       </div>
       `
-    // } else {
-    //   singleTask += `
-    //   <div class="task">
-    //     <img class="checkbox" src="assets/checkbox-active.svg">
-    //     <p data-id="task-text" class="checked">${array[i].text}</p> 
-    //   </div>
-    //   `
+      //BUGGY CODE
+      // } else {
+      //   singleTask += `
+      //   <div class="task">
+      //     <img class="checkbox" src="assets/checkbox-active.svg">
+      //     <p data-id="task-text" class="checked">${array[i].text}</p> 
+      //   </div>
+      //   `
     }
   }
   return singleTask
@@ -254,31 +246,33 @@ function displayRetrievedTasks(array) {
 
 // CARD BUTTONS TOGGLE
 
-function cardBtnToggle(event){
+function cardBtnToggle(event) {
   checkTaskToggle(event);
   urgentBtnToggle(event)
 }
-// BUGGY
+
 function checkTaskToggle(event) {
-  // var taskID = event.target.dataset.id;
-  // var listID = event.target.parentNode.parentNode.dataset.id
-  if (event.target.classList.contains('checkbox')){
+  if (event.target.classList.contains('checkbox')) {
+    //BUGGY CODE
+    // var taskID = event.target.dataset.id;
+    // var listID = event.target.parentNode.parentNode.dataset.id
     var taskCheckbox = event.target.closest('.task');
     taskCheckbox.classList.toggle('checked');
-    if (event.target.src.match('assets/checkbox.svg')){
+    if (event.target.src.match('assets/checkbox.svg')) {
       event.target.src = 'assets/checkbox-active.svg'
     } else {
       event.target.src = 'assets/checkbox.svg';
     }
-  }  
-  // completedTask(taskID, listID)
+    //BUGGY CODE
+    // completedTask(taskID, listID)
+  }
 }
 
 function urgentBtnToggle(event) {
-  if (event.target.classList.contains('urgent-btn')){
+  if (event.target.classList.contains('urgent-btn')) {
     event.target.parentNode.parentNode.parentNode.firstElementChild.nextSibling.nextSibling.classList.toggle('urgentSelected');
     event.target.parentNode.parentNode.parentNode.parentNode.classList.toggle('urgentSelected');
-    if (event.target.src.match('assets/urgent.svg')){
+    if (event.target.src.match('assets/urgent.svg')) {
       event.target.src = 'assets/urgent-active.svg';
     } else {
       event.target.src = 'assets/urgent.svg'
@@ -286,7 +280,8 @@ function urgentBtnToggle(event) {
   }
 }
 
+//BUGGY CODE
 // function completedTask(taskID, listID) {
-//   var cardInstance = tasksCards.find(card => card.id == listID)
+//   var cardInstance = tasksCards.find(card=>card.id == listID)
 //   cardInstance.updateTask(taskID)
 // }

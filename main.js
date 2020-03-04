@@ -221,7 +221,7 @@ function displayRetrievedCards(array) {
             <p>Urgent</p>
           </div>
           <div class="delete">
-            <img src="assets/delete.svg">
+            <img class="delete-btn" src="assets/delete.svg">
             <p>Delete</p>
           </div>
         </div>

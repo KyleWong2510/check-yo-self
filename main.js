@@ -173,7 +173,7 @@ function cardTasks(newToDoList) {
   for (var i = 0; i < newToDoList.tasks.length; i++) {
     tasksSection.innerHTML += `
     <div class="task">
-      <img class="checkbox" src="assets/checkbox.svg">
+      <img class="checkbox" src="assets/checkbox.svg" data-id=${newToDoList.tasks[i].taskId}>
       <p>${newToDoList.tasks[i].text}</p> 
     </div>
     `
@@ -233,12 +233,21 @@ function displayRetrievedCards(array) {
 function displayRetrievedTasks(array) {
   var singleTask = '';
   for (var i = 0; i < array.length; i++) {
-    singleTask += `
-    <div class="task">
-      <img class="checkbox" src="assets/checkbox.svg">
-      <p data-id="task-text">${array[i].text}</p> 
-    </div>
-    `
+    if (array[i].completed == false) {
+      singleTask += `
+      <div class="task">
+        <img class="checkbox" src="assets/checkbox.svg">
+        <p data-id="task-text">${array[i].text}</p> 
+      </div>
+      `
+    // } else {
+    //   singleTask += `
+    //   <div class="task">
+    //     <img class="checkbox" src="assets/checkbox-active.svg">
+    //     <p data-id="task-text" class="checked">${array[i].text}</p> 
+    //   </div>
+    //   `
+    }
   }
   return singleTask
 }
@@ -249,8 +258,10 @@ function cardBtnToggle(event){
   checkTaskToggle(event);
   urgentBtnToggle(event)
 }
-
+// BUGGY
 function checkTaskToggle(event) {
+  // var taskID = event.target.dataset.id;
+  // var listID = event.target.parentNode.parentNode.dataset.id
   if (event.target.classList.contains('checkbox')){
     var taskCheckbox = event.target.closest('.task');
     taskCheckbox.classList.toggle('checked');
@@ -260,6 +271,7 @@ function checkTaskToggle(event) {
       event.target.src = 'assets/checkbox.svg';
     }
   }  
+  // completedTask(taskID, listID)
 }
 
 function urgentBtnToggle(event) {
@@ -274,8 +286,7 @@ function urgentBtnToggle(event) {
   }
 }
 
-// function deleteToDoList() {
-//   for (var i = 0; i < currentTasks[i]; i++){
-//     if (currentTasks[i].completed == true)
-//   }
+// function completedTask(taskID, listID) {
+//   var cardInstance = tasksCards.find(card => card.id == listID)
+//   cardInstance.updateTask(taskID)
 // }

@@ -26,7 +26,9 @@ class ToDoList {
     this.tasks[i].completed = true;
   };
 
-  updateTask() {
-
+  updateTask(taskID) {
+    var completedTask = this.tasks.find(task=>task.taskId == taskID)
+    completedTask.completed = !completedTask.completed;
+    this.saveToStorage(tasksCards)
   };
 }

@@ -6,6 +6,12 @@ body {
 
 }
 
+button:hover {
+  cursor: pointer;
+  opacity: .75;
+  outline: none;
+}
+
 /* HEADER */
 header {
   background-color: #1F1F3D;
@@ -252,6 +258,14 @@ aside input {
   color: #3C6577;
   font-style: italic;
 }
+
+.checkbox,
+.delete,
+.urgent-btn:hover {
+  cursor: pointer;
+  opacity: .75;
+}
+
 
 .hide {
   display: none;

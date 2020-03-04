@@ -6,7 +6,7 @@ var taskDisplay = document.querySelector('.task-display');
 var taskList = document.querySelector('.task-list');
 var cardDisplay = document.querySelector('#card-display');
 var emptyToDoMsg = document.querySelector('.empty-to-do-msg');
-
+var cardSection = document.querySelector('.masonry')
 var createTaskBtn = document.querySelector('.create-task-btn');
 var deleteTaskBtn = document.querySelector('.delete-task-btn');
 var clearAllBtn = document.querySelector('.clear-all-btn');
@@ -20,6 +20,7 @@ createTaskBtn.addEventListener('click', addTask);
 taskDisplay.addEventListener('click', deleteTask);
 clearAllBtn.addEventListener('click', clearAll);
 makeListBtn.addEventListener('click', displayCard);
+cardSection.addEventListener('click', cardBtnToggle)
 
 clearAllBtn.disabled = true;
 makeListBtn.disabled = true;
@@ -243,9 +244,6 @@ function displayRetrievedTasks(array) {
 }
 
 // CARD BUTTONS TOGGLE
-
-var cardSection = document.querySelector('.masonry')
-cardSection.addEventListener('click', cardBtnToggle)
 
 function cardBtnToggle(event){
   checkTaskToggle(event);

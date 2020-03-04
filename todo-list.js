@@ -19,13 +19,12 @@ class ToDoList {
   };
 
   deleteFromStorage() {
-    // localStorage.removeItem(`'${this.id}'`);
   };
 
   updateToDo() {
-    this.tasks[i].completed = true;
   };
 
+  //BUGGY CODE
   updateTask(taskID) {
     var completedTask = this.tasks.find(task=>task.taskId == taskID)
     completedTask.completed = !completedTask.completed;
